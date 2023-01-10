@@ -9,7 +9,7 @@ public class Swimmer : MonoBehaviour
     private Animator anim; //animator component for later use
 
     private float movementX; //set later to Input.GetAxisRaw("Horizontal"), which basically sets it to 1 when D(d) or Rigth Arrow is pressed and to -1 when A(a) or Left arrow is pressed; used to change direction on different button presses, may be removed later
-    private float Displacement = 1f; //arbitrary value of 1 for now, may be removed/replaced later
+    private float Displacement = 0.1f; //arbitrary value of 1 for now, may be removed/replaced later
     private bool Animation; //boolean value of animation condition, used later
     private bool Rext = true; //Default Right Sphere position set to be extended
     private bool Lext = true; //Default Left Sphere position set to be extended
@@ -35,7 +35,7 @@ public class Swimmer : MonoBehaviour
 
     void SwimmerMove(float x) {
         movementX = Input.GetAxisRaw("Horizontal");
-        //transform.position += new Vector3(x, 0f, 0f) * movementX; //moves the swimmer
+        transform.position += new Vector3(x, 0f, 0f) * movementX; //moves the swimmer
     }
 
     //function to animate left sphere, uses Extended as the boolean animation condition
@@ -49,15 +49,19 @@ public class Swimmer : MonoBehaviour
         //similarly set up animation conditions and new sphere positions for each possible scenario when left sphere is moved
         } else if (Lext == false && Rext == true) {
             anim.SetBool(Extended, true);
+            SwimmerMove(-0.13531f);
             Lext = true;
         } else if (Lext == true && Rext == false) {
             anim.SetBool(Extended, false);
+            SwimmerMove(0f);
             Lext = false;
         } else if (Lext == false && Rext == false) {
             anim.SetBool(Extended, true);
+            SwimmerMove(0f);
             Lext = true;
         } else if (Lext == false && Rext == true) {
             anim.SetBool(Extended, true);
+            SwimmerMove(0.14391f);
             Lext = true;
         }
     }
@@ -73,15 +77,19 @@ public class Swimmer : MonoBehaviour
         //similarly set up animation conditions and new sphere positions for each possible scenario when right sphere is moved
         } else if (Lext == true && Rext == false) {
             anim.SetBool(Extended, true);
+            SwimmerMove(0.14391f);
             Rext = true;
         } else if (Lext == false && Rext == true) {
             anim.SetBool(Extended, false);
+            SwimmerMove(-0.13531f);
             Rext = false;
         } else if (Lext == false && Rext == false) {
             anim.SetBool(Extended, true);
+            SwimmerMove(0f);
             Rext = true;
         } else if (Lext == true && Rext == false) {
             anim.SetBool(Extended, true);
+            SwimmerMove(-0.13531f);
             Rext = true;
         }
     }
@@ -90,14 +98,13 @@ public class Swimmer : MonoBehaviour
     void PlayerInput() {
         //run move function and animate right sphere on right arrow press
         if (Input.GetKeyDown(KeyCode.RightArrow)) {
-            //move a certain Displacement value
-            SwimmerMove(Displacement);
+            //move a certain Displacement value           
             //animate right sphere, passes RsphereExtended boolean animation condition, is used as Extended keyword in the function
             RsphereAnimate("RsphereExtended");
         //run move function and animate left sphere on left arrow press
         } else if (Input.GetKeyDown(KeyCode.LeftArrow)) {
             //move a certain Displacement value
-            SwimmerMove(Displacement);
+            //SwimmerMove(Displacement);
             //animate left sphere, passes LsphereExtended boolean animation condition, is used as Extended keyword in the function
             LsphereAnimate("LsphereExtended");
         }
