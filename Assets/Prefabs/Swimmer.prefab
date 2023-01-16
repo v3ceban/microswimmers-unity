@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 557924959763990626}
   m_Layer: 0
   m_Name: Swimmer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8282958083268169702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.011, y: 0.521, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1601545174, guid: 9611c65391fad8540aa1c45bf2917d29, type: 3}
+  m_Sprite: {fileID: -634054720, guid: 82006a6092ec99640b5ba1065d2e86c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.628888, y: 1.03}
+  m_Size: {x: 5.6351633, y: 1.0500001}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -157,3 +157,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a0c88197372e545a4be57a11ce8331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Left: 97
+  Right: 100
