@@ -22,12 +22,6 @@ public class Swimmer : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -120,9 +114,10 @@ public class Swimmer : MonoBehaviour
         //Input.GetAxisRaw("Horizontal") returns 1 when D or Right Arrow is pressed and -1 when A or Left Arrow is pressed
         //directionVector is set to the opposite direction to move swimmer forward when movement sequence is started from left arm and backwards when it's started from right arm
         directionVector = Input.GetAxisRaw("Horizontal") * -1;
-        //moves the swimmer on X axis a certain Displacement * direction and / by 100 to make movement smooth
-        //Time.DeltaTime is not used as it returns different values and adds a random factor to the movements
-        transform.position += new Vector3(Displacement, 0f, 0f) * directionVector / 100;
+        //moves the swimmer on X axis a certain Displacement * direction and Time.deltaTime to make the movement smooth
+        //Time.deltaTime causes small inconsistencies when the same button is pressed again and again
+        //Need to find a better way for that but will do for now
+        transform.position += new Vector3(Displacement, 0f, 0f) * directionVector * Time.deltaTime;
     }
 
     //run movement and animation functions based on key input;
